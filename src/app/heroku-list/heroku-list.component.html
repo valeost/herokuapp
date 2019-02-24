@@ -1,0 +1,6 @@
+<p>
+  heroku-list works!
+</p>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="example-box" *ngFor="let city of cities" cdkDrag>{{city.title}}</div>
+</div>

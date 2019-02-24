@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://wf-challenge-jrpygindrv.herokuapp.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
