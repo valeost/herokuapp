@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HerokuUpdateFormComponent } from './heroku-update-form.component';
+import { HerokuMapComponent } from './heroku-map.component';
 
-xdescribe('HerokuUpdateFormComponent', () => {
-  let component: HerokuUpdateFormComponent;
-  let fixture: ComponentFixture<HerokuUpdateFormComponent>;
+describe('HerokuMapComponent', () => {
+  let component: HerokuMapComponent;
+  let fixture: ComponentFixture<HerokuMapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HerokuUpdateFormComponent ]
+      declarations: [ HerokuMapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HerokuUpdateFormComponent);
+    fixture = TestBed.createComponent(HerokuMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

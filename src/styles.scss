@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.item {
+    &[small] {
+        width: 33%;
+    };
+    &[medium] {
+        width: 50%;
+    };
+}
+.avatar{
+    &--small {
+        &.mat-card-avatar {
+            height: 60px;
+            width: 100px;
+        }
+    }
+    &--x-medium {
+        &.mat-card-avatar {
+            height: 200px;
+            width: 300px;
+        }
+    }
+}

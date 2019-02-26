@@ -1,6 +1,36 @@
-<p>
-  heroku-list works!
-</p>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let city of cities" cdkDrag>{{city.title}}</div>
-</div>
+
+<mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let city of cities">
+        <mat-card  class="mat-card--marging">
+            <mat-card-header>
+              <div mat-card-avatar class="avatar--small">
+                <img [src]="city.image_url" [alt]="city.title">
+              </div>
+              <mat-card-title>
+                {{city.title}}
+                <!-- <mat-icon>home</mat-icon> -->
+                
+                    <mat-icon (click)="flyToCity(city)">place</mat-icon>
+                
+              </mat-card-title>
+              
+            </mat-card-header>
+          
+            <!-- <img mat-card-image [src]="city.image_url" [alt]="city.title"> -->
+            <mat-card-content>
+              <!-- <img small [src]="city.image_url" [alt]="city.title"> -->
+              <!-- <span>
+                      {{city.content}}
+                    </span> -->
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="showCityDetail(city)">INFO</button>
+              
+              <button mat-button>DELETE</button>
+            </mat-card-actions>
+          </mat-card>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <app-heroku-map ></app-heroku-map>
+  

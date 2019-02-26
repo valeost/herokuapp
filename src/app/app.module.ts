@@ -9,13 +9,24 @@ import { HerokuListComponent } from './heroku-list/heroku-list.component';
 import { HerokuDetailComponent } from './heroku-detail/heroku-detail.component';
 import { HerokuUpdateFormComponent } from './heroku-update-form/heroku-update-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {
+  MatCardModule,
+  MatButtonModule,
+  MatListModule,
+  MatGridListModule,
+  MatIconModule,
+  MatFormFieldModule
+} from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { HerokuMapComponent } from './heroku-map/heroku-map.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     HerokuListComponent,
     HerokuDetailComponent,
     HerokuUpdateFormComponent,
+    HerokuMapComponent,
     
   ],
   imports: [
@@ -24,7 +35,16 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     AppRoutingModule,
     DragDropModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatIconModule,
+    MatFormFieldModule,
+    RouterModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
