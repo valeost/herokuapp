@@ -8,23 +8,12 @@ import { AppComponent } from './app.component';
 import { CityListComponent } from './city-list/city-list.component';
 import { CityDetailComponent } from './city-detail/city-detail.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatCardModule,
-  MatButtonModule,
-  MatListModule,
-  MatGridListModule,
-  MatIconModule,
-  MatFormFieldModule,
-  MatSnackBarModule,
-  MatDialogModule,
-  MatInputModule,
-  MatToolbarModule
-} from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { CityMapComponent } from './city-map/city-map.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CityToolbarComponent } from './toolbar/toolbar.component';
 import { CityDialogComponent } from './city-dialog/city-dialog.component';
+import { AppmatModule } from './appmat/appmat.module';
 
 @NgModule({
   declarations: [
@@ -34,9 +23,7 @@ import { CityDialogComponent } from './city-dialog/city-dialog.component';
     CityMapComponent,
     CityDetailComponent,
     CityToolbarComponent,
-    CityDialogComponent
-    
-  ],
+    CityDialogComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -44,22 +31,10 @@ import { CityDialogComponent } from './city-dialog/city-dialog.component';
     AppRoutingModule,
     DragDropModule,
     HttpClientModule,
-    MatListModule,
-    MatCardModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSnackBarModule,
-    MatDialogModule,
-    MatInputModule,
-    MatToolbarModule,
-    MatFormFieldModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule 
-
-  ],
+    AppmatModule,
+    FormsModule],
   entryComponents: [
     CityDialogComponent
   ],

@@ -26,44 +26,41 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   positionCity: PositionModel;
   dialogRef: MatDialogRef<CityDialogComponent>;
   constructor(
-    private _apiService: ApiService,
-    private _router: ActivatedRoute,
+    private apiService: ApiService,
+    private router: ActivatedRoute,
     public dialog: MatDialog,
-    private _toolbarService: CityToolbarService,
-    private _location: Location,
-    private _snackBar: MatSnackBar
+    private toolbarService: CityToolbarService,
+    private location: Location,
+    private snackBar: MatSnackBar
   ) {
-    this.id = +this._router.snapshot.paramMap.get('id');
-    this._toolbarService.config({
+    this.id = +this.router.snapshot.paramMap.get('id');
+    this.toolbarService.config({
       label: 'keyboard_return',
       title: 'Information'
     });
-    this.subscrbtions.push(this._toolbarService._action$.subscribe(() => {
-      this._location.back();
+    this.subscrbtions.push(this.toolbarService._action$.subscribe(() => {
+      this.location.back();
     }));
   }
-
   ngOnInit() {
     this.loadData();
-
   }
   ngOnDestroy(): void {
     this.subscrbtions.forEach(sub => {
-      sub.unsubscribe()
+      sub.unsubscribe();
     });
   }
   loadData() {
-    this.subscrbtions.push(this._apiService.showCity(this.id).pipe(map(city => {
-      debugger;
-      let lat = parseFloat(city.lat.toString());
-      let long = parseFloat(city.long.toString());
+    this.subscrbtions.push(this.apiService.showCity(this.id).pipe(map(city => {
+      const latT = parseFloat(city.lat.toString());
+      const longT = parseFloat(city.long.toString());
       return {
         id: city.id,
         title: city.title,
         content: city.content,
         image_url: city.image_url,
-        lat: lat,
-        long: long
+        lat: latT,
+        long: longT
       };
 
     })).subscribe(mappedCity => {
@@ -71,66 +68,59 @@ export class CityDetailComponent implements OnInit, OnDestroy {
       this.positionCity = {
         lat: this.city.lat,
         long: this.city.long
-      }
+      };
     },
-    err => {
-      this.openSnackBar(err, 'Close');
-    }
-  ));
+      err => {
+        this.openSnackBar(err, 'Close');
+      }
+    ));
   }
   updateCityDetail() {
     this.openDialog();
-
   }
-  openDialog() {;
+  openDialog() {
     this.dialogRef = this.dialog.open(CityDialogComponent, {
       width: '40rem',
-      data: { city: this.city, title: "Update Data"},
-      
+      data: { city: this.city, title: 'Update Data' },
     });
     this.afterCloseDialog();
   }
   afterCloseDialog() {
-    let subs = this.dialogRef.afterClosed().subscribe(result => {
+    const subs = this.dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.city = result.data;
-      if(result.action) {
+      if (result.action) {
         this.uploadData();
       }
-      
-
     });
     this.subscrbtions.push(subs);
   }
   uploadData() {
-    this.subscrbtions.push(this._apiService.updateCity(this.id, this.city).pipe(map(city => {
-      let lat = parseFloat(city.lat.toString());
-      let long = parseFloat(city.long.toString());
+    this.subscrbtions.push(this.apiService.updateCity(this.id, this.city).pipe(map(city => {
+      const latT = parseFloat(city.lat.toString());
+      const longT = parseFloat(city.long.toString());
       return {
         id: city.id,
         title: city.title,
         content: city.content,
         image_url: city.image_url,
-        lat: lat,
-        long: long
+        lat: latT,
+        long: longT
       };
-
     })).subscribe(mappedCity => {
       this.city = mappedCity;
       this.positionCity = {
         lat: this.city.lat,
         long: this.city.long
+      };
+    }, err => {
+        this.openSnackBar(err, 'Close');
       }
-    },
-    err => {
-      this.openSnackBar(err, 'Close');
-    }
-  ));
+    ));
   }
   openSnackBar(message: string, action: string) {
-    debugger;
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 4000,
     });
-  };
+  }
 }

@@ -4,31 +4,31 @@
     <div>
       <mat-form-field class="full-width">
         <input matInput formControlName="title" placeholder="Title">
-        <mat-error *ngIf="form.controls['title'].invalid">{{getErrorMessage('title')}}</mat-error>
+        <mat-error *ngIf="form.get('title').invalid">{{getErrorMessage('title')}}</mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="full-width">
         <textarea matInput formControlName="content" placeholder="Description"> </textarea>
-        <mat-error *ngIf="form.controls['content'].invalid">{{getErrorMessage('content')}}</mat-error>
+        <mat-error *ngIf="form.get('content').invalid">{{getErrorMessage('content')}}</mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="full-width">
         <input type="number" matInput formControlName="lat" placeholder="Latitude">
-        <mat-error *ngIf="form.controls['lat'].invalid">{{getErrorMessage('lat')}}</mat-error>
+        <mat-error *ngIf="form.get('lat').invalid">{{getErrorMessage('lat')}}</mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="full-width">
         <input type="number" matInput formControlName="long" placeholder="Longitude">
-        <mat-error *ngIf="form.controls['long'].invalid">{{getErrorMessage('long')}}</mat-error>
+        <mat-error *ngIf="form.get('long').invalid">{{getErrorMessage('long')}}</mat-error>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field class="full-width">
         <input matInput formControlName="image_url" placeholder="Image url">
-        <mat-error *ngIf="form.controls['image_url'].invalid">{{getErrorMessage('image_url')}}</mat-error>
+        <mat-error *ngIf="form.get('image_url').invalid">{{getErrorMessage('image_url')}}</mat-error>
       </mat-form-field>
     </div>
   </form>

@@ -9,6 +9,7 @@ import {Vector as VectorLayer} from 'ol/layer.js';
 import Point from 'ol/geom/Point.js';
 import {Circle as CircleStyle, Fill, Icon, Stroke, Style} from 'ol/style.js';
 import { PositionModel } from '../models/position.model';
+import { coordinate} from 'ol/coordinate.js'
 import VectorSource from 'ol/source/Vector.js';
 @Component({
   selector: 'app-city-map',
@@ -21,7 +22,7 @@ export class CityMapComponent implements OnInit {
     long: 2.173404
   };
   view: View;
-  geolocation: Location;
+  geolocation: coordinate;
   geoMarker: Feature;
   style: Style;
   map: Map;
@@ -29,20 +30,15 @@ export class CityMapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
-    
     this.initMap();
- 
   }
   initMap() {
     this.geolocation = fromLonLat([this.position.long, this.position.lat]);
     this.view = new View({
-      center: this.geolocation,
+      center: fromLonLat([this.position.long, this.position.lat]),
       zoom: 8
     });
-
     this.style = new Style({
-
       image: new Icon({
         anchor: [0.5, 1],
         src: 'assets/img/location.png'
@@ -50,8 +46,7 @@ export class CityMapComponent implements OnInit {
     });
     this.geoMarker = new Feature({
       type: 'icon',
-      geometry: new Point(fromLonLat([this.position.long, this.position.lat])),
-      
+      geometry: new Point(fromLonLat([this.position.long, this.position.lat]))
     });
     this.geoMarker.setStyle(this.style);
     this.vectorLayer = new VectorLayer({
@@ -73,7 +68,7 @@ export class CityMapComponent implements OnInit {
   }
   flyTo(position: PositionModel, done) {
     this.geolocation = fromLonLat([position.long, position.lat]);
-    this.geoMarker.setGeometry(new Point(fromLonLat([position.long, position.lat])));
+    this.geoMarker.setGeometry(new Point(this.geolocation));
     var duration = 2000;
     var zoom = this.view.getZoom();
     var parts = 2;
@@ -93,7 +88,7 @@ export class CityMapComponent implements OnInit {
       duration: duration
     }, callback);
     this.view.animate({
-      zoom: zoom - 1,
+      zoom: zoom - 4,
       duration: duration / 2
     }, {
       zoom: zoom,

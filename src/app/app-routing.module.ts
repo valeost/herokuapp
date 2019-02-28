@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'city/:id', component: CityDetailComponent },
   {
     path: '',
-    redirectTo:'/cities',
+    redirectTo: '/cities',
     pathMatch: 'full'
   }
 ];

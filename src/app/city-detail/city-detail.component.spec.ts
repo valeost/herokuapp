@@ -17,27 +17,25 @@ describe('CityDetailComponent', () => {
   let fixture: ComponentFixture<CityDetailComponent>;
   let spaApiService;
   let router: Router;
-  let dialogSpy: MatDialog;
-  let dialogRef: MatDialogRef<CityDialogComponent>;
   let dialogTest: MatDialog;
   let htmlElement: HTMLElement;
-  let testCity = {
+  const testCity = {
     id: 1,
-    title: "Madrid",
-    content: "Madrid is the capital of Spain and the largest municipality in both the Community of Madrid and Spain as a whole.",
+    title: 'Madrid',
+    content: 'Madrid is the capital of Spain and the largest municipality in both the Community of Madrid and Spain as a whole.',
     lat: 40.41678,
     long: -3.70379,
-    image_url: "https://c2.staticflickr.com/2/1269/4670777817_d657cd9819_b.jpg"
+    image_url: 'https://c2.staticflickr.com/2/1269/4670777817_d657cd9819_b.jpg'
   };
-  let newTestCity = {
+  const newTestCity = {
     id: 1,
-    title: "Madrid2",
-    content: "Madrid is the capital of Spain and the largest municipality in both the Community of Madrid and Spain as a whole.",
+    title: 'Madrid2',
+    content: 'Madrid is the capital of Spain and the largest municipality in both the Community of Madrid and Spain as a whole.',
     lat: 40.41678,
     long: -3.70379,
-    image_url: "https://c2.staticflickr.com/2/1269/4670777817_d657cd9819_b.jpg"
+    image_url: 'https://c2.staticflickr.com/2/1269/4670777817_d657cd9819_b.jpg'
   };
-  let mockState = { state: { id: 1 } };
+  const mockState = { state: { id: 1 } };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -70,21 +68,19 @@ describe('CityDetailComponent', () => {
   });
   it('should load data', async(() => {
     spyOn(spaApiService, 'showCity').and.returnValue(of(testCity));
-    
     component.loadData();
     fixture.detectChanges();
     expect(component.city).toEqual(testCity);
   }));
   it('should update data', async(() => {
     spyOn(spaApiService, 'updateCity').and.returnValue(of(newTestCity));
-    
     component.uploadData();
     fixture.detectChanges();
     expect(component.city).toEqual(newTestCity);
   }));
   it('should be bind data', () => {
     const config = {
-      data: { city: testCity, title: "Update Data"}
+      data: { city: testCity, title: 'Update Data'}
     };
     dialogTest.open(CityDialogComponent, config);
     fixture.detectChanges();

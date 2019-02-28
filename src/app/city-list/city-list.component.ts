@@ -104,7 +104,6 @@ export class CityListComponent implements OnInit, OnDestroy {
     this.mapComponent.flyTo(position, function () { });
   }
   openSnackBar(message: string, action: string) {
-    debugger;
     this._snackBar.open(message, action, {
       duration: 4000,
     });
