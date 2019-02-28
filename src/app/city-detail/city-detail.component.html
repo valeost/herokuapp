@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="item">
+    <mat-card class="mat-card--marging" *ngIf="city">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar--x-medium">
+          <img [src]="city.image_url || '/assets/img/city_default.jpg'" [alt]="city.title">
+        </div>
+      </mat-card-header>
+        <mat-card-content>
+          <h2>
+            {{city.title}}
+          </h2>
+          {{city.content}}
+        </mat-card-content>
+      
+      <mat-card-actions>
+        <button mat-button (click)="updateCityDetail(city)">UPDATE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="item full-width">
+    <app-city-map *ngIf="city" [position]="positionCity"></app-city-map>
+  </div>
+</div>

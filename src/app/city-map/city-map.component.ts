@@ -1,51 +1,79 @@
 import { Component, OnInit, Input } from '@angular/core';
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
-import {easeIn, easeOut} from 'ol/easing.js';
 import TileLayer from 'ol/layer/Tile.js';
 import {fromLonLat} from 'ol/proj.js';
 import OSM from 'ol/source/OSM.js';
-import { Position } from '@angular/compiler';
+import Feature from 'ol/Feature.js';
+import {Vector as VectorLayer} from 'ol/layer.js';
+import Point from 'ol/geom/Point.js';
+import {Circle as CircleStyle, Fill, Icon, Stroke, Style} from 'ol/style.js';
 import { PositionModel } from '../models/position.model';
+import VectorSource from 'ol/source/Vector.js';
 @Component({
-  selector: 'app-heroku-map',
-  templateUrl: './heroku-map.component.html',
-  styleUrls: ['./heroku-map.component.scss']
+  selector: 'app-city-map',
+  templateUrl: './city-map.component.html',
+  styleUrls: ['./city-map.component.scss']
 })
-export class HerokuMapComponent implements OnInit {
+export class CityMapComponent implements OnInit {
   @Input() position: PositionModel = {
     lat: 41.385063,
     long: 2.173404
   };
   view: View;
   geolocation: Location;
+  geoMarker: Feature;
+  style: Style;
+  map: Map;
+  vectorLayer : VectorLayer;
   constructor() { }
 
   ngOnInit() {
+    
+    
+    this.initMap();
+ 
+  }
+  initMap() {
     this.geolocation = fromLonLat([this.position.long, this.position.lat]);
     this.view = new View({
       center: this.geolocation,
-      zoom: 6
+      zoom: 8
     });
 
-    var map = new Map({
+    this.style = new Style({
+
+      image: new Icon({
+        anchor: [0.5, 1],
+        src: 'assets/img/location.png'
+      })
+    });
+    this.geoMarker = new Feature({
+      type: 'icon',
+      geometry: new Point(fromLonLat([this.position.long, this.position.lat])),
+      
+    });
+    this.geoMarker.setStyle(this.style);
+    this.vectorLayer = new VectorLayer({
+      source: new VectorSource({
+        features: [this.geoMarker]
+      })
+    });
+     this.map = new Map({
       target: 'map',
       layers: [
         new TileLayer({
           preload: 4,
           source: new OSM()
-        })
+        }), this.vectorLayer
       ],
-      // Improve user experience by loading tiles while animating. Will make
-      // animations stutter on mobile or slow devices.
       loadTilesWhileAnimating: true,
       view: this.view
     });
-
- 
   }
   flyTo(position: PositionModel, done) {
     this.geolocation = fromLonLat([position.long, position.lat]);
+    this.geoMarker.setGeometry(new Point(fromLonLat([position.long, position.lat])));
     var duration = 2000;
     var zoom = this.view.getZoom();
     var parts = 2;

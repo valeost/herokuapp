@@ -5,9 +5,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HerokuListComponent } from './heroku-list/heroku-list.component';
-import { HerokuDetailComponent } from './heroku-detail/heroku-detail.component';
-import { HerokuUpdateFormComponent } from './heroku-update-form/heroku-update-form.component';
+import { CityListComponent } from './city-list/city-list.component';
+import { CityDetailComponent } from './city-detail/city-detail.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatCardModule,
@@ -15,18 +14,27 @@ import {
   MatListModule,
   MatGridListModule,
   MatIconModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatInputModule,
+  MatToolbarModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { HerokuMapComponent } from './heroku-map/heroku-map.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { CityMapComponent } from './city-map/city-map.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CityToolbarComponent } from './toolbar/toolbar.component';
+import { CityDialogComponent } from './city-dialog/city-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HerokuListComponent,
-    HerokuDetailComponent,
-    HerokuUpdateFormComponent,
-    HerokuMapComponent,
+    CityListComponent,
+    CityDetailComponent,
+    CityMapComponent,
+    CityDetailComponent,
+    CityToolbarComponent,
+    CityDialogComponent
     
   ],
   imports: [
@@ -42,9 +50,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatGridListModule,
     MatIconModule,
     MatFormFieldModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatFormFieldModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule 
 
+  ],
+  entryComponents: [
+    CityDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

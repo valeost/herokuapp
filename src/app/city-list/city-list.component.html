@@ -1,16 +1,16 @@
 
-<mat-grid-list cols="4" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let city of cities">
-        <mat-card  class="mat-card--marging">
+<div class="container">
+    <div class="item city__list--height" small >
+        <mat-card  class="mat-card--marging mr1" *ngFor="let city of cities">
             <mat-card-header>
               <div mat-card-avatar class="avatar--small">
-                <img [src]="city.image_url" [alt]="city.title">
+                <img [src]="city.image_url || '/assets/img/city_default.jpg'" [alt]="city.title">
               </div>
               <mat-card-title>
                 {{city.title}}
                 <!-- <mat-icon>home</mat-icon> -->
                 
-                    <mat-icon (click)="flyToCity(city)">place</mat-icon>
+                    <mat-icon lincable (click)="flyToCity(city)">place</mat-icon>
                 
               </mat-card-title>
               
@@ -26,11 +26,13 @@
             <mat-card-actions>
               <button mat-button (click)="showCityDetail(city)">INFO</button>
               
-              <button mat-button>DELETE</button>
+              <button mat-button (click)="removeCity(city)">DELETE</button>
             </mat-card-actions>
           </mat-card>
-    </mat-grid-tile>
+        </div>
+        <div class="item full">
+            <app-city-map ></app-city-map>
+        </div>
 
-  </mat-grid-list>
-  <app-heroku-map ></app-heroku-map>
+  </div>
   

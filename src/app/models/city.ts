@@ -1,5 +1,5 @@
 export interface City {
-    id: number;
+    id?: number;
     title: string;
     content: string;
     lat: number;

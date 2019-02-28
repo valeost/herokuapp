@@ -1,20 +1,21 @@
+import { AppModule } from './../app.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HerokuUpdateFormComponent } from './heroku-update-form.component';
+import { CityToolbarComponent } from './toolbar.component';
 
-xdescribe('HerokuUpdateFormComponent', () => {
-  let component: HerokuUpdateFormComponent;
-  let fixture: ComponentFixture<HerokuUpdateFormComponent>;
+describe('cityToolbarComponent', () => {
+  let component: CityToolbarComponent;
+  let fixture: ComponentFixture<CityToolbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HerokuUpdateFormComponent ]
+      imports: [AppModule]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HerokuUpdateFormComponent);
+    fixture = TestBed.createComponent(CityToolbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

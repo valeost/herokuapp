@@ -1,13 +1,13 @@
 import { AppModule } from './../app.module';
 import { Observable, of, defer } from 'rxjs';
-import { ApiService } from '../core/api/api-service.service';
+import { ApiService } from '../services/api-service.service';
 import { async, ComponentFixture, TestBed, fakeAsync, tick, inject } from '@angular/core/testing';
 
-import { HerokuListComponent } from './heroku-list.component';
+import { CityListComponent } from './city-list.component';
 import { HttpClientTestingModule }  from '@angular/common/http/testing';
-describe('HerokuListComponent', () => {
-  let component: HerokuListComponent;
-  let fixture: ComponentFixture<HerokuListComponent>;
+describe('cityListComponent', () => {
+  let component: CityListComponent;
+  let fixture: ComponentFixture<CityListComponent>;
   let testList = [
     {
       id: 1,
@@ -50,7 +50,7 @@ describe('HerokuListComponent', () => {
 
   beforeEach(inject([ApiService], s => {
     apiService = s;
-    fixture = TestBed.createComponent(HerokuListComponent);
+    fixture = TestBed.createComponent(CityListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HerokuMapComponent } from './heroku-map.component';
+import { CityMapComponent } from './city-map.component';
 
-describe('HerokuMapComponent', () => {
-  let component: HerokuMapComponent;
-  let fixture: ComponentFixture<HerokuMapComponent>;
+describe('CityMapComponent', () => {
+  let component: CityMapComponent;
+  let fixture: ComponentFixture<CityMapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HerokuMapComponent ]
+      declarations: [ CityMapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HerokuMapComponent);
+    fixture = TestBed.createComponent(CityMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

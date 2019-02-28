@@ -21,8 +21,17 @@
     }
     &--x-medium {
         &.mat-card-avatar {
-            height: 200px;
+            height: 220px;
             width: 300px;
         }
     }
 }
+[lincable] {
+    cursor: default;
+}
+.full-width {
+    width: 100%;
+  }
+  .mr1 {
+      margin: 1rem;
+  }
