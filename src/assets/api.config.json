@@ -1,3 +1,3 @@
 {
-  "endpoint": "https://wf-challenge-jrpygindrv.herokuapp.com/api/v1/posts"
+  "endpoint": "api/v1/posts"
 }

@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+ // endpoint: "/api/v1/posts",
+  endpoint: "assets/api.config.json",
   production: false
 };
 
