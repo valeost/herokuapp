@@ -11,6 +11,7 @@ import {Circle as CircleStyle, Fill, Icon, Stroke, Style} from 'ol/style.js';
 import { PositionModel } from '../models/position.model';
 import { coordinate} from 'ol/coordinate.js'
 import VectorSource from 'ol/source/Vector.js';
+import { addCommon as addCommonProjections } from 'ol/proj.js';
 @Component({
   selector: 'app-city-map',
   templateUrl: './city-map.component.html',
@@ -33,6 +34,7 @@ export class CityMapComponent implements OnInit {
     this.initMap();
   }
   initMap() {
+    addCommonProjections();
     this.geolocation = fromLonLat([this.position.long, this.position.lat]);
     this.view = new View({
       center: fromLonLat([this.position.long, this.position.lat]),
@@ -65,6 +67,7 @@ export class CityMapComponent implements OnInit {
       loadTilesWhileAnimating: true,
       view: this.view
     });
+
   }
   flyTo(position: PositionModel, done) {
     this.geolocation = fromLonLat([position.long, position.lat]);
